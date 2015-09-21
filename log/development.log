@@ -1,0 +1,1805 @@
+Connecting to database specified by database.yml
+  [1m[36m (87.9ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (201.6ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (42.0ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateUsers (20101007181515)
+  [1m[35m (180.9ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int(11) DEFAULT 0, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `admin` tinyint(1) DEFAULT 0, `first_name` varchar(255), `last_name` varchar(255), `status` varchar(255), `expiration_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (167.2ms)[0m  [1mCREATE UNIQUE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [1m[35m (155.8ms)[0m  CREATE UNIQUE INDEX `index_users_on_reset_password_token` ON `users` (`reset_password_token`)
+  [1m[36m (44.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20101007181515')[0m
+Migrating to CreateAccessGrants (20101007181933)
+  [1m[35m (77.2ms)[0m  CREATE TABLE `access_grants` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `code` varchar(255), `access_token` varchar(255), `refresh_token` varchar(255), `access_token_expires_at` datetime, `user_id` int(11), `client_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (44.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20101007181933')[0m
+Migrating to CreateAuthentications (20110202133040)
+  [1m[35m (77.2ms)[0m  CREATE TABLE `authentications` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `provider` varchar(255), `uid` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (44.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110202133040')[0m
+Migrating to CreateClient (20110203105441)
+  [1m[35m (77.3ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `app_id` varchar(255), `app_secret` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (44.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110203105441')[0m
+Migrating to AddStateToAccessGrants (20120711180145)
+  [1m[35m (213.3ms)[0m  ALTER TABLE `access_grants` ADD `state` varchar(255)
+  [1m[36m (32.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120711180145')[0m
+  [1m[35m (0.2ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-30 19:01:46 +0500
+Processing by AuthController#welcome as HTML
+Completed 401 Unauthorized in 4ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-30 19:01:46 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.4ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (1.0ms)
+  Rendered sessions/new.html.erb within layouts/application (26.8ms)
+Compiled application.css  (0ms)  (pid 12896)
+Compiled jquery.js  (2ms)  (pid 12896)
+Compiled jquery_ujs.js  (0ms)  (pid 12896)
+Compiled application.js  (31ms)  (pid 12896)
+Completed 200 OK in 182ms (Views: 103.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-30 19:01:46 +0500
+Processing by AuthController#welcome as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-30 19:01:46 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.5ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.9ms)
+  Rendered sessions/new.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-30 19:01:47 +0500
+Served asset /application.css - 200 OK (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-30 19:01:47 +0500
+Served asset /application.js - 200 OK (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-30 19:01:47 +0500
+Served asset /jquery.js - 200 OK (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-30 19:01:47 +0500
+Served asset /jquery_ujs.js - 200 OK (1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-30 19:01:56 +0500
+Processing by AuthController#welcome as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-30 19:01:56 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.2ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.5ms)
+  Rendered sessions/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-30 19:01:56 +0500
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-30 19:01:56 +0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-30 19:01:56 +0500
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-30 19:01:56 +0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=e4c4b2fc9aa0c27db9d51e29e6954592b67efe17b678df08" for 127.0.0.1 at 2015-01-30 19:01:58 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"e4c4b2fc9aa0c27db9d51e29e6954592b67efe17b678df08"}
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-30 19:01:58 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.2ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.3ms)
+  Rendered sessions/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-30 19:01:58 +0500
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-30 19:01:58 +0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-30 19:01:58 +0500
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-30 19:01:58 +0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-01-30 19:02:56 +0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5qpSyv4U0lhtdvpALW3ZRLVeTS3zbX/PScDXfLPYw7g=", "user"=>{"email"=>"faisal@devsinc.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'faisal@devsinc.com' LIMIT 1[0m
+Completed 401 Unauthorized in 31ms
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5qpSyv4U0lhtdvpALW3ZRLVeTS3zbX/PScDXfLPYw7g=", "user"=>{"email"=>"faisal@devsinc.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  Rendered sessions/_social_networks.html.erb (0.1ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.2ms)
+  Rendered sessions/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 72ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-30 19:02:56 +0500
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-30 19:02:56 +0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-30 19:02:56 +0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-30 19:02:56 +0500
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-01-30 19:03:06 +0500
+Processing by RegistrationsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.2ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.4ms)
+  Rendered registrations/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-30 19:03:06 +0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-30 19:03:06 +0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-30 19:03:06 +0500
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-30 19:03:06 +0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2015-01-30 19:03:19 +0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5qpSyv4U0lhtdvpALW3ZRLVeTS3zbX/PScDXfLPYw7g=", "user"=>{"first_name"=>"faisal", "last_name"=>"sahil", "email"=>"faisal@devsinc.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'faisal@devsinc.com' LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO `users` (`admin`, `created_at`, `current_sign_in_at`, `current_sign_in_ip`, `email`, `encrypted_password`, `expiration_date`, `first_name`, `last_name`, `last_sign_in_at`, `last_sign_in_ip`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `sign_in_count`, `status`, `updated_at`) VALUES (0, '2015-01-30 14:03:20', NULL, NULL, 'faisal@devsinc.com', '$2a$10$1WiV/ZGyMXPKGnYa8Fsv7.hNjMvd4xaMuLX8FtIVajfY/mrfQQhAO', '2016-01-30 14:03:20', 'faisal', 'sahil', NULL, NULL, NULL, NULL, NULL, 0, 'Active', '2015-01-30 14:03:20')
+  [1m[36m (47.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2015-01-30 14:03:20', `current_sign_in_at` = '2015-01-30 14:03:20', `last_sign_in_ip` = '127.0.0.1', `current_sign_in_ip` = '127.0.0.1', `sign_in_count` = 1, `updated_at` = '2015-01-30 14:03:20' WHERE `users`.`id` = 1[0m
+  [1m[35m (41.8ms)[0m  COMMIT
+Redirected to http://localhost:3000/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=e4c4b2fc9aa0c27db9d51e29e6954592b67efe17b678df08
+Completed 302 Found in 297ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=e4c4b2fc9aa0c27db9d51e29e6954592b67efe17b678df08" for 127.0.0.1 at 2015-01-30 19:03:20 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"e4c4b2fc9aa0c27db9d51e29e6954592b67efe17b678df08"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM `access_grants` WHERE (created_at < '2015-01-27 14:03:20')
+  [1m[36mClient Load (0.2ms)[0m  [1mSELECT `clients`.* FROM `clients` WHERE `clients`.`app_id` = '098zaqxsw4567' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `access_grants` (`access_token`, `access_token_expires_at`, `client_id`, `code`, `created_at`, `refresh_token`, `state`, `updated_at`, `user_id`) VALUES ('d344e3e721f911f1e4e53916c05a2085', NULL, 1, '7fd23ef8f718aa5aa9558e31c1501c46', '2015-01-30 14:03:20', 'fbd882e58295b70601274f49c9a701e0', 'e4c4b2fc9aa0c27db9d51e29e6954592b67efe17b678df08', '2015-01-30 14:03:20', 1)[0m
+  [1m[35m (46.8ms)[0m  COMMIT
+Redirected to http://localhost:3001/auth/joshid/callback?code=7fd23ef8f718aa5aa9558e31c1501c46&response_type=code&state=e4c4b2fc9aa0c27db9d51e29e6954592b67efe17b678df08
+Completed 302 Found in 109ms (ActiveRecord: 49.9ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2015-01-30 19:03:20 +0500
+Processing by AuthController#access_token as */*
+  Parameters: {"grant_type"=>"authorization_code", "code"=>"7fd23ef8f718aa5aa9558e31c1501c46", "client_id"=>"098zaqxsw4567", "client_secret"=>"zaqxswcdevfrbgt", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback"}
+  [1m[36mClient Load (0.4ms)[0m  [1mSELECT `clients`.* FROM `clients` WHERE (app_id = '098zaqxsw4567' AND app_secret = 'zaqxswcdevfrbgt') LIMIT 1[0m
+  [1m[35mAccessGrant Load (0.3ms)[0m  SELECT `access_grants`.* FROM `access_grants` WHERE (code = '7fd23ef8f718aa5aa9558e31c1501c46' AND client_id = 1) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  UPDATE `access_grants` SET `access_token_expires_at` = '2015-01-30 14:33:20', `updated_at` = '2015-01-30 14:03:20' WHERE `access_grants`.`id` = 1
+  [1m[36m (41.2ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 48ms (Views: 0.6ms | ActiveRecord: 42.2ms)
+
+
+Started GET "/auth/josh_id/user.json?oauth_token=d344e3e721f911f1e4e53916c05a2085" for 127.0.0.1 at 2015-01-30 19:03:20 +0500
+Processing by AuthController#user as JSON
+  Parameters: {"oauth_token"=>"d344e3e721f911f1e4e53916c05a2085"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT users.* FROM `users` INNER JOIN `access_grants` ON `access_grants`.`user_id` = `users`.`id` WHERE (access_grants.access_token = 'd344e3e721f911f1e4e53916c05a2085' AND (access_grants.access_token_expires_at IS NULL OR access_grants.access_token_expires_at > '2015-01-30 14:03:20')) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  UPDATE `users` SET `current_sign_in_at` = '2015-01-30 14:03:20', `sign_in_count` = 2, `updated_at` = '2015-01-30 14:03:20' WHERE `users`.`id` = 1
+  [1m[36m (47.6ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 78ms (Views: 0.2ms | ActiveRecord: 48.3ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-30 19:03:28 +0500
+Processing by SessionsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-30 19:03:28 +0500
+Processing by AuthController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  Rendered text template (0.0ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.1ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2015-01-30 19:05:11 +0500
+Processing by SessionsController#destroy as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 93ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-30 19:05:12 +0500
+Processing by AuthController#welcome as HTML
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-30 19:05:12 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.4ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.9ms)
+  Rendered sessions/new.html.erb within layouts/application (26.7ms)
+Completed 200 OK in 45ms (Views: 43.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-30 19:05:12 +0500
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-30 19:05:12 +0500
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-30 19:05:12 +0500
+Served asset /jquery.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-30 19:05:12 +0500
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-30 19:05:14 +0500
+Processing by AuthController#welcome as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-30 19:05:14 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.1ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.2ms)
+  Rendered sessions/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-30 19:05:14 +0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-30 19:05:14 +0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-30 19:05:14 +0500
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-30 19:05:14 +0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-01-30 19:05:43 +0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IGfkHbg6VYCATL3p5ts1aFc8UZhNAeK5SWtYwTkpANk=", "user"=>{"email"=>"faisal@devsinc.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`email` = 'faisal@devsinc.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (19.3ms)[0m  UPDATE `users` SET `current_sign_in_at` = '2015-01-30 14:05:43', `sign_in_count` = 3, `updated_at` = '2015-01-30 14:05:43' WHERE `users`.`id` = 1
+  [1m[36m (53.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 156ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-30 19:05:43 +0500
+Processing by AuthController#welcome as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  Rendered text template (0.0ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-01-30 19:05:59 +0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IGfkHbg6VYCATL3p5ts1aFc8UZhNAeK5SWtYwTkpANk=", "user"=>{"email"=>"faisal@devsinc.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-30 19:05:59 +0500
+Processing by AuthController#welcome as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-30 19:06:03 +0500
+Processing by AuthController#welcome as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-31 10:39:32 +0500
+Processing by AuthController#welcome as HTML
+  [1m[35mUser Load (73.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (39.9ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Completed 401 Unauthorized in 115ms
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-31 10:39:33 +0500
+Processing by AuthController#welcome as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-31 10:39:33 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.2ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.3ms)
+  Rendered sessions/new.html.erb within layouts/application (36.5ms)
+Completed 200 OK in 132ms (Views: 131.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-31 10:39:33 +0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-31 10:39:33 +0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-31 10:39:33 +0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-31 10:39:33 +0500
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-31 10:39:38 +0500
+Processing by AuthController#welcome as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-31 10:39:38 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.3ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.5ms)
+  Rendered sessions/new.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 13ms (Views: 11.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-31 10:39:38 +0500
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-31 10:39:38 +0500
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-31 10:39:38 +0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-31 10:39:38 +0500
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=733dc6319e5d617a1f5980e6e7204abcb4e69bfdafd82f3c" for 127.0.0.1 at 2015-01-31 10:39:41 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"733dc6319e5d617a1f5980e6e7204abcb4e69bfdafd82f3c"}
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-31 10:39:41 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.3ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.6ms)
+  Rendered sessions/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-31 10:39:41 +0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-31 10:39:41 +0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-31 10:39:41 +0500
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-31 10:39:41 +0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-01-31 10:39:52 +0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IGfkHbg6VYCATL3p5ts1aFc8UZhNAeK5SWtYwTkpANk=", "user"=>{"email"=>"faisal@devsinc.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (442.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'faisal@devsinc.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (42.9ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2015-01-30 14:05:43', `current_sign_in_at` = '2015-01-31 05:39:53', `sign_in_count` = 4, `updated_at` = '2015-01-31 05:39:53' WHERE `users`.`id` = 1[0m
+  [1m[35m (71.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=733dc6319e5d617a1f5980e6e7204abcb4e69bfdafd82f3c
+Completed 302 Found in 674ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=733dc6319e5d617a1f5980e6e7204abcb4e69bfdafd82f3c" for 127.0.0.1 at 2015-01-31 10:39:53 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"733dc6319e5d617a1f5980e6e7204abcb4e69bfdafd82f3c"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM `access_grants` WHERE (created_at < '2015-01-28 05:39:53')
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT `clients`.* FROM `clients` WHERE `clients`.`app_id` = '098zaqxsw4567' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `access_grants` (`access_token`, `access_token_expires_at`, `client_id`, `code`, `created_at`, `refresh_token`, `state`, `updated_at`, `user_id`) VALUES ('97f772ac3d4e92158fa41a3b38b360a6', NULL, 1, 'a034616a9730e78ed8a6554cfb3a61b4', '2015-01-31 05:39:53', '4b5651cb2bd4d44aabaaa0ea6e6052cb', '733dc6319e5d617a1f5980e6e7204abcb4e69bfdafd82f3c', '2015-01-31 05:39:53', 1)[0m
+  [1m[35m (74.8ms)[0m  COMMIT
+Redirected to http://localhost:3001/auth/joshid/callback?code=a034616a9730e78ed8a6554cfb3a61b4&response_type=code&state=733dc6319e5d617a1f5980e6e7204abcb4e69bfdafd82f3c
+Completed 302 Found in 428ms (ActiveRecord: 161.2ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2015-01-31 10:39:53 +0500
+Processing by AuthController#access_token as */*
+  Parameters: {"grant_type"=>"authorization_code", "code"=>"a034616a9730e78ed8a6554cfb3a61b4", "client_id"=>"098zaqxsw4567", "client_secret"=>"zaqxswcdevfrbgt", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback"}
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT `clients`.* FROM `clients` WHERE (app_id = '098zaqxsw4567' AND app_secret = 'zaqxswcdevfrbgt') LIMIT 1[0m
+  [1m[35mAccessGrant Load (0.2ms)[0m  SELECT `access_grants`.* FROM `access_grants` WHERE (code = 'a034616a9730e78ed8a6554cfb3a61b4' AND client_id = 1) LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.6ms)[0m  UPDATE `access_grants` SET `access_token_expires_at` = '2015-01-31 06:09:53', `updated_at` = '2015-01-31 05:39:53' WHERE `access_grants`.`id` = 2
+  [1m[36m (48.8ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 54ms (Views: 0.2ms | ActiveRecord: 49.6ms)
+
+
+Started GET "/auth/josh_id/user.json?oauth_token=97f772ac3d4e92158fa41a3b38b360a6" for 127.0.0.1 at 2015-01-31 10:39:53 +0500
+Processing by AuthController#user as JSON
+  Parameters: {"oauth_token"=>"97f772ac3d4e92158fa41a3b38b360a6"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT users.* FROM `users` INNER JOIN `access_grants` ON `access_grants`.`user_id` = `users`.`id` WHERE (access_grants.access_token = '97f772ac3d4e92158fa41a3b38b360a6' AND (access_grants.access_token_expires_at IS NULL OR access_grants.access_token_expires_at > '2015-01-31 05:39:53')) LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (17.1ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2015-01-31 05:39:53', `current_sign_in_at` = '2015-01-31 05:39:53', `sign_in_count` = 5, `updated_at` = '2015-01-31 05:39:53' WHERE `users`.`id` = 1
+  [1m[36m (60.4ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 96ms (Views: 0.1ms | ActiveRecord: 77.8ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-31 10:39:59 +0500
+Processing by SessionsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-31 10:39:59 +0500
+Processing by AuthController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2015-01-31 10:40:03 +0500
+Processing by SessionsController#destroy as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-31 10:40:03 +0500
+Processing by AuthController#welcome as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-31 10:40:03 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.5ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.4ms)
+  Rendered sessions/new.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-31 10:40:03 +0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-31 10:40:03 +0500
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-31 10:40:03 +0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-31 10:40:03 +0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-31 10:40:07 +0500
+Processing by AuthController#welcome as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-31 10:40:07 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.1ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.3ms)
+  Rendered sessions/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 7ms (Views: 6.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-31 10:40:07 +0500
+Served asset /jquery.js - 200 OK (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-31 10:40:07 +0500
+Served asset /jquery_ujs.js - 200 OK (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-31 10:40:07 +0500
+Served asset /application.css - 200 OK (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-31 10:40:07 +0500
+Served asset /application.js - 200 OK (0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (14.8ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=61e907c815b3a4836e0c4ce50168294ec80f08723cbf5582" for 127.0.0.1 at 2015-01-31 14:21:03 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"61e907c815b3a4836e0c4ce50168294ec80f08723cbf5582"}
+Completed 401 Unauthorized in 25ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-31 14:21:03 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.4ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (1.2ms)
+  Rendered sessions/new.html.erb within layouts/application (44.8ms)
+Completed 200 OK in 305ms (Views: 240.3ms | ActiveRecord: 20.4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-31 14:21:03 +0500
+Served asset /jquery.js - 200 OK (17ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-31 14:21:03 +0500
+Served asset /jquery_ujs.js - 200 OK (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-31 14:21:03 +0500
+Served asset /application.js - 200 OK (3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-31 14:21:03 +0500
+Served asset /application.css - 200 OK (1ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-01-31 14:21:06 +0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CSGb4WV+t9Kx+Y0dsCNo6mA7Y4lU8XyB4hzRecPvpTU=", "user"=>{"email"=>"admin@chimpchamp.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (45.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'admin@chimpchamp.com' LIMIT 1[0m
+Completed 401 Unauthorized in 179ms
+Processing by SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CSGb4WV+t9Kx+Y0dsCNo6mA7Y4lU8XyB4hzRecPvpTU=", "user"=>{"email"=>"admin@chimpchamp.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered sessions/_social_networks.html.erb (0.1ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.2ms)
+  Rendered sessions/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 73ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-01-31 14:21:14 +0500
+Processing by RegistrationsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.2ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.5ms)
+  Rendered registrations/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2015-01-31 14:21:28 +0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CSGb4WV+t9Kx+Y0dsCNo6mA7Y4lU8XyB4hzRecPvpTU=", "user"=>{"first_name"=>"ali", "last_name"=>"", "email"=>"a@a.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (44.5ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'a@a.com' LIMIT 1[0m
+  [1m[35mSQL (35.1ms)[0m  INSERT INTO `users` (`admin`, `created_at`, `current_sign_in_at`, `current_sign_in_ip`, `email`, `encrypted_password`, `expiration_date`, `first_name`, `last_name`, `last_sign_in_at`, `last_sign_in_ip`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `sign_in_count`, `status`, `updated_at`) VALUES (0, '2015-01-31 09:21:29', NULL, NULL, 'a@a.com', '$2a$10$CXqEX.SJTDKzA1ZUql56..ajUrDTXMiu9CAEN63ifu7feIIXkbESK', '2016-01-31 09:21:29', 'ali', '', NULL, NULL, NULL, NULL, NULL, 0, 'Active', '2015-01-31 09:21:29')
+  [1m[36m (86.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.1ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2015-01-31 09:21:29', `current_sign_in_at` = '2015-01-31 09:21:29', `last_sign_in_ip` = '127.0.0.1', `current_sign_in_ip` = '127.0.0.1', `sign_in_count` = 1, `updated_at` = '2015-01-31 09:21:29' WHERE `users`.`id` = 2[0m
+  [1m[35m (40.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=61e907c815b3a4836e0c4ce50168294ec80f08723cbf5582
+Completed 302 Found in 681ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=61e907c815b3a4836e0c4ce50168294ec80f08723cbf5582" for 127.0.0.1 at 2015-01-31 14:21:29 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"61e907c815b3a4836e0c4ce50168294ec80f08723cbf5582"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35mSQL (20.7ms)[0m  DELETE FROM `access_grants` WHERE (created_at < '2015-01-28 09:21:29')
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT `clients`.* FROM `clients` WHERE `clients`.`app_id` = '098zaqxsw4567' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (26.6ms)[0m  [1mINSERT INTO `access_grants` (`access_token`, `access_token_expires_at`, `client_id`, `code`, `created_at`, `refresh_token`, `state`, `updated_at`, `user_id`) VALUES ('e832f928948098e8d6a6ded7f6baadfb', NULL, 1, 'a2084a4539588886a0ee8d5fd29ebdd3', '2015-01-31 09:21:29', '7d85c0e83016d09b51f3ee74d9d53ef3', '61e907c815b3a4836e0c4ce50168294ec80f08723cbf5582', '2015-01-31 09:21:29', 2)[0m
+  [1m[35m (58.4ms)[0m  COMMIT
+Redirected to http://localhost:3001/auth/joshid/callback?code=a2084a4539588886a0ee8d5fd29ebdd3&response_type=code&state=61e907c815b3a4836e0c4ce50168294ec80f08723cbf5582
+Completed 302 Found in 185ms (ActiveRecord: 107.8ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2015-01-31 14:21:29 +0500
+Processing by AuthController#access_token as */*
+  Parameters: {"grant_type"=>"authorization_code", "code"=>"a2084a4539588886a0ee8d5fd29ebdd3", "client_id"=>"098zaqxsw4567", "client_secret"=>"zaqxswcdevfrbgt", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback"}
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT `clients`.* FROM `clients` WHERE (app_id = '098zaqxsw4567' AND app_secret = 'zaqxswcdevfrbgt') LIMIT 1[0m
+  [1m[35mAccessGrant Load (0.4ms)[0m  SELECT `access_grants`.* FROM `access_grants` WHERE (code = 'a2084a4539588886a0ee8d5fd29ebdd3' AND client_id = 1) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE `access_grants` SET `access_token_expires_at` = '2015-01-31 09:51:29', `updated_at` = '2015-01-31 09:21:29' WHERE `access_grants`.`id` = 3
+  [1m[36m (53.4ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 60ms (Views: 0.2ms | ActiveRecord: 54.4ms)
+
+
+Started GET "/auth/josh_id/user.json?oauth_token=e832f928948098e8d6a6ded7f6baadfb" for 127.0.0.1 at 2015-01-31 14:21:29 +0500
+Processing by AuthController#user as JSON
+  Parameters: {"oauth_token"=>"e832f928948098e8d6a6ded7f6baadfb"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT users.* FROM `users` INNER JOIN `access_grants` ON `access_grants`.`user_id` = `users`.`id` WHERE (access_grants.access_token = 'e832f928948098e8d6a6ded7f6baadfb' AND (access_grants.access_token_expires_at IS NULL OR access_grants.access_token_expires_at > '2015-01-31 09:21:29')) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE `users` SET `current_sign_in_at` = '2015-01-31 09:21:29', `sign_in_count` = 2, `updated_at` = '2015-01-31 09:21:29' WHERE `users`.`id` = 2
+  [1m[36m (97.3ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 126ms (Views: 0.1ms | ActiveRecord: 98.3ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2015-01-31 14:21:43 +0500
+Processing by SessionsController#destroy as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 30ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-31 14:21:43 +0500
+Processing by AuthController#welcome as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-31 14:21:43 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.5ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.8ms)
+  Rendered sessions/new.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 15ms (Views: 14.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=41b6284d9cf8439750a71201f1a796b96e96cdbdb248729a" for 127.0.0.1 at 2015-01-31 14:21:46 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"41b6284d9cf8439750a71201f1a796b96e96cdbdb248729a"}
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=68b90c1b8e84cdd2d53140393845f4f14adcb1321a5f0e52" for 127.0.0.1 at 2015-01-31 14:21:48 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"68b90c1b8e84cdd2d53140393845f4f14adcb1321a5f0e52"}
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-31 14:21:48 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.2ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.3ms)
+  Rendered sessions/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=5f81b5764ea44bd99920b7b256bb3b3e961e08a687838a96" for 127.0.0.1 at 2015-01-31 14:22:32 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"5f81b5764ea44bd99920b7b256bb3b3e961e08a687838a96"}
+Completed 500 Internal Server Error in 30ms
+
+NoMethodError (undefined method `token_authentication_key' for #<Class:0x00000003fc3700>):
+  activerecord (3.2.8) lib/active_record/dynamic_matchers.rb:50:in `method_missing'
+  devise (2.1.2) lib/devise/strategies/token_authenticatable.rb:50:in `authentication_keys'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:133:in `with_authentication_hash'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:83:in `valid_for_params_auth?'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:16:in `valid?'
+  warden (1.2.1) lib/warden/proxy.rb:351:in `block in _run_strategies_for'
+  warden (1.2.1) lib/warden/proxy.rb:349:in `each'
+  warden (1.2.1) lib/warden/proxy.rb:349:in `_run_strategies_for'
+  warden (1.2.1) lib/warden/proxy.rb:319:in `_perform_authentication'
+  warden (1.2.1) lib/warden/proxy.rb:127:in `authenticate!'
+  devise (2.1.2) lib/devise/controllers/helpers.rb:48:in `authenticate_user!'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:418:in `_run__3374893518604180564__process_action__4524639301221571355__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.8) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.8) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.8) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.8) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.8) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1313393815731325154__call__3573837593506033350__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.8ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=4a5d5dca9c26594faaab7a8dfebbc1002d0e25de97fc995f" for 127.0.0.1 at 2015-01-31 14:23:19 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"4a5d5dca9c26594faaab7a8dfebbc1002d0e25de97fc995f"}
+Completed 500 Internal Server Error in 17ms
+
+NoMethodError (undefined method `token_authentication_key' for #<Class:0x007f1bc0115110>):
+  activerecord (3.2.8) lib/active_record/dynamic_matchers.rb:50:in `method_missing'
+  devise (2.1.2) lib/devise/strategies/token_authenticatable.rb:50:in `authentication_keys'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:133:in `with_authentication_hash'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:83:in `valid_for_params_auth?'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:16:in `valid?'
+  warden (1.2.1) lib/warden/proxy.rb:351:in `block in _run_strategies_for'
+  warden (1.2.1) lib/warden/proxy.rb:349:in `each'
+  warden (1.2.1) lib/warden/proxy.rb:349:in `_run_strategies_for'
+  warden (1.2.1) lib/warden/proxy.rb:319:in `_perform_authentication'
+  warden (1.2.1) lib/warden/proxy.rb:127:in `authenticate!'
+  devise (2.1.2) lib/devise/controllers/helpers.rb:48:in `authenticate_user!'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:418:in `_run__3374893518604180564__process_action__4524639301221571355__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.8) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.8) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.8) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.8) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.8) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1313393815731325154__call__3573837593506033350__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.1ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=4839f702e6b528c49d88ca0da2ade00bf41b9ac2d436456c" for 127.0.0.1 at 2015-01-31 14:23:41 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"4839f702e6b528c49d88ca0da2ade00bf41b9ac2d436456c"}
+Completed 500 Internal Server Error in 0ms
+
+NoMethodError (undefined method `token_authentication_key' for #<Class:0x007f1bc0115110>):
+  activerecord (3.2.8) lib/active_record/dynamic_matchers.rb:50:in `method_missing'
+  devise (2.1.2) lib/devise/strategies/token_authenticatable.rb:50:in `authentication_keys'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:133:in `with_authentication_hash'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:83:in `valid_for_params_auth?'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:16:in `valid?'
+  warden (1.2.1) lib/warden/proxy.rb:351:in `block in _run_strategies_for'
+  warden (1.2.1) lib/warden/proxy.rb:349:in `each'
+  warden (1.2.1) lib/warden/proxy.rb:349:in `_run_strategies_for'
+  warden (1.2.1) lib/warden/proxy.rb:319:in `_perform_authentication'
+  warden (1.2.1) lib/warden/proxy.rb:127:in `authenticate!'
+  devise (2.1.2) lib/devise/controllers/helpers.rb:48:in `authenticate_user!'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:418:in `_run__3374893518604180564__process_action__4524639301221571355__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.8) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.8) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.8) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.8) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.8) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1313393815731325154__call__3573837593506033350__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.2ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=4c69dd279c3c794f7d6bee41eb39bfb41a52aeb92c9f0e6d" for 127.0.0.1 at 2015-01-31 14:23:41 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"4c69dd279c3c794f7d6bee41eb39bfb41a52aeb92c9f0e6d"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `token_authentication_key' for #<Class:0x007f1bc0115110>):
+  activerecord (3.2.8) lib/active_record/dynamic_matchers.rb:50:in `method_missing'
+  devise (2.1.2) lib/devise/strategies/token_authenticatable.rb:50:in `authentication_keys'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:133:in `with_authentication_hash'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:83:in `valid_for_params_auth?'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:16:in `valid?'
+  warden (1.2.1) lib/warden/proxy.rb:351:in `block in _run_strategies_for'
+  warden (1.2.1) lib/warden/proxy.rb:349:in `each'
+  warden (1.2.1) lib/warden/proxy.rb:349:in `_run_strategies_for'
+  warden (1.2.1) lib/warden/proxy.rb:319:in `_perform_authentication'
+  warden (1.2.1) lib/warden/proxy.rb:127:in `authenticate!'
+  devise (2.1.2) lib/devise/controllers/helpers.rb:48:in `authenticate_user!'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:418:in `_run__3374893518604180564__process_action__4524639301221571355__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.8) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.8) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.8) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.8) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.8) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1313393815731325154__call__3573837593506033350__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.2ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=709439dc913b3598e3515981d83ce08b255e87fcb4a6b82c" for 127.0.0.1 at 2015-01-31 14:24:21 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"709439dc913b3598e3515981d83ce08b255e87fcb4a6b82c"}
+Completed 500 Internal Server Error in 0ms
+
+NoMethodError (undefined method `token_authentication_key' for #<Class:0x007f1bc0115110>):
+  activerecord (3.2.8) lib/active_record/dynamic_matchers.rb:50:in `method_missing'
+  devise (2.1.2) lib/devise/strategies/token_authenticatable.rb:50:in `authentication_keys'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:133:in `with_authentication_hash'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:83:in `valid_for_params_auth?'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:16:in `valid?'
+  warden (1.2.1) lib/warden/proxy.rb:351:in `block in _run_strategies_for'
+  warden (1.2.1) lib/warden/proxy.rb:349:in `each'
+  warden (1.2.1) lib/warden/proxy.rb:349:in `_run_strategies_for'
+  warden (1.2.1) lib/warden/proxy.rb:319:in `_perform_authentication'
+  warden (1.2.1) lib/warden/proxy.rb:127:in `authenticate!'
+  devise (2.1.2) lib/devise/controllers/helpers.rb:48:in `authenticate_user!'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:418:in `_run__3374893518604180564__process_action__4524639301221571355__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.8) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.8) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.8) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.8) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.8) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1313393815731325154__call__3573837593506033350__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.6ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.6ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.8ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=d31e7f3b512fc9799cb98122f0cefe4afc15fdb4c14b8460" for 127.0.0.1 at 2015-01-31 14:24:28 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"d31e7f3b512fc9799cb98122f0cefe4afc15fdb4c14b8460"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `token_authentication_key' for #<Class:0x007f1bc0115110>):
+  activerecord (3.2.8) lib/active_record/dynamic_matchers.rb:50:in `method_missing'
+  devise (2.1.2) lib/devise/strategies/token_authenticatable.rb:50:in `authentication_keys'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:133:in `with_authentication_hash'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:83:in `valid_for_params_auth?'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:16:in `valid?'
+  warden (1.2.1) lib/warden/proxy.rb:351:in `block in _run_strategies_for'
+  warden (1.2.1) lib/warden/proxy.rb:349:in `each'
+  warden (1.2.1) lib/warden/proxy.rb:349:in `_run_strategies_for'
+  warden (1.2.1) lib/warden/proxy.rb:319:in `_perform_authentication'
+  warden (1.2.1) lib/warden/proxy.rb:127:in `authenticate!'
+  devise (2.1.2) lib/devise/controllers/helpers.rb:48:in `authenticate_user!'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:418:in `_run__3374893518604180564__process_action__4524639301221571355__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.8) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.8) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.8) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.8) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.8) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1313393815731325154__call__3573837593506033350__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.6ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=2c7475461fd75ede5803619ae3e2f2e337da45937f0f447e" for 127.0.0.1 at 2015-01-31 14:25:20 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"2c7475461fd75ede5803619ae3e2f2e337da45937f0f447e"}
+Completed 500 Internal Server Error in 17ms
+
+NoMethodError (undefined method `token_authentication_key=' for #<Class:0x007f1bbc37bea8>):
+  app/models/user.rb:10:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+
+
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (20.0ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (25.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-31 14:25:56 +0500
+Processing by AuthController#welcome as HTML
+Completed 500 Internal Server Error in 18ms
+
+NoMethodError (undefined method `token_authentication_key' for #<Class:0x007f1bc43b7ea0>):
+  activerecord (3.2.8) lib/active_record/dynamic_matchers.rb:50:in `method_missing'
+  devise (2.1.2) lib/devise/strategies/token_authenticatable.rb:50:in `authentication_keys'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:133:in `with_authentication_hash'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:83:in `valid_for_params_auth?'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:16:in `valid?'
+  warden (1.2.1) lib/warden/proxy.rb:351:in `block in _run_strategies_for'
+  warden (1.2.1) lib/warden/proxy.rb:349:in `each'
+  warden (1.2.1) lib/warden/proxy.rb:349:in `_run_strategies_for'
+  warden (1.2.1) lib/warden/proxy.rb:319:in `_perform_authentication'
+  warden (1.2.1) lib/warden/proxy.rb:127:in `authenticate!'
+  devise (2.1.2) lib/devise/controllers/helpers.rb:48:in `authenticate_user!'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:418:in `_run__3374893518604180564__process_action__1962789066580576343__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.8) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.8) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.8) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.8) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.8) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1313393815731325154__call__3573837593506033350__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.6ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.5ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.9ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=ebd738fc536489e16f66c31e2322d4a516daafbdc21c0cdd" for 127.0.0.1 at 2015-01-31 14:25:58 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"ebd738fc536489e16f66c31e2322d4a516daafbdc21c0cdd"}
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `token_authentication_key' for #<Class:0x007f1bc43b7ea0>):
+  activerecord (3.2.8) lib/active_record/dynamic_matchers.rb:50:in `method_missing'
+  devise (2.1.2) lib/devise/strategies/token_authenticatable.rb:50:in `authentication_keys'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:133:in `with_authentication_hash'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:83:in `valid_for_params_auth?'
+  devise (2.1.2) lib/devise/strategies/authenticatable.rb:16:in `valid?'
+  warden (1.2.1) lib/warden/proxy.rb:351:in `block in _run_strategies_for'
+  warden (1.2.1) lib/warden/proxy.rb:349:in `each'
+  warden (1.2.1) lib/warden/proxy.rb:349:in `_run_strategies_for'
+  warden (1.2.1) lib/warden/proxy.rb:319:in `_perform_authentication'
+  warden (1.2.1) lib/warden/proxy.rb:127:in `authenticate!'
+  devise (2.1.2) lib/devise/controllers/helpers.rb:48:in `authenticate_user!'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:418:in `_run__3374893518604180564__process_action__4524639301221571355__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.8) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.8) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.8) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.8) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.8) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.8) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.8) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.8) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.8) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.8) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.8) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/cookies.rb:339:in `call'
+  activerecord (3.2.8) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `_run__1313393815731325154__call__3573837593506033350__callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.8) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.8) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /home/devsinc/.rvm/rubies/ruby-1.9.3-p547/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-31 14:27:31 +0500
+Processing by AuthController#welcome as HTML
+Completed 401 Unauthorized in 31ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-31 14:27:31 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.1ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.3ms)
+  Rendered sessions/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 18ms (Views: 6.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-31 14:27:31 +0500
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-31 14:27:31 +0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-31 14:27:31 +0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-31 14:27:31 +0500
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=6e2f0e68676812615243572fdda75a8bfed59a73c76e5bff" for 127.0.0.1 at 2015-01-31 14:27:33 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"6e2f0e68676812615243572fdda75a8bfed59a73c76e5bff"}
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-31 14:27:33 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.2ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@provider/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.3ms)
+  Rendered sessions/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-31 14:27:33 +0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-31 14:27:33 +0500
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-31 14:27:33 +0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-31 14:27:33 +0500
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-01-31 14:27:48 +0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HYeuQ2gr92uCvI238ysI2c8vYhCl24ePIuty0e/ygME=", "user"=>{"email"=>"a@a.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'a@a.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mUPDATE `users` SET `current_sign_in_at` = '2015-01-31 09:27:48', `sign_in_count` = 3, `updated_at` = '2015-01-31 09:27:48' WHERE `users`.`id` = 2[0m
+  [1m[35m (38.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=6e2f0e68676812615243572fdda75a8bfed59a73c76e5bff
+Completed 302 Found in 146ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=6e2f0e68676812615243572fdda75a8bfed59a73c76e5bff" for 127.0.0.1 at 2015-01-31 14:27:48 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"6e2f0e68676812615243572fdda75a8bfed59a73c76e5bff"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  DELETE FROM `access_grants` WHERE (created_at < '2015-01-28 09:27:48')
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT `clients`.* FROM `clients` WHERE `clients`.`app_id` = '098zaqxsw4567' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `access_grants` (`access_token`, `access_token_expires_at`, `client_id`, `code`, `created_at`, `refresh_token`, `state`, `updated_at`, `user_id`) VALUES ('9ddfd1e5419b37a85dc7f826f8b3947c', NULL, 1, '5996e97c83cab94d70fb53a1b1d16e55', '2015-01-31 09:27:48', '69d3e6352b3eaab01162bb6daa9a2ec4', '6e2f0e68676812615243572fdda75a8bfed59a73c76e5bff', '2015-01-31 09:27:48', 2)[0m
+  [1m[35m (47.4ms)[0m  COMMIT
+Redirected to http://localhost:3001/auth/joshid/callback?code=5996e97c83cab94d70fb53a1b1d16e55&response_type=code&state=6e2f0e68676812615243572fdda75a8bfed59a73c76e5bff
+Completed 302 Found in 100ms (ActiveRecord: 50.9ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2015-01-31 14:27:49 +0500
+Processing by AuthController#access_token as */*
+  Parameters: {"grant_type"=>"authorization_code", "code"=>"5996e97c83cab94d70fb53a1b1d16e55", "client_id"=>"098zaqxsw4567", "client_secret"=>"zaqxswcdevfrbgt", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback"}
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT `clients`.* FROM `clients` WHERE (app_id = '098zaqxsw4567' AND app_secret = 'zaqxswcdevfrbgt') LIMIT 1[0m
+  [1m[35mAccessGrant Load (0.2ms)[0m  SELECT `access_grants`.* FROM `access_grants` WHERE (code = '5996e97c83cab94d70fb53a1b1d16e55' AND client_id = 1) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  UPDATE `access_grants` SET `access_token_expires_at` = '2015-01-31 09:57:49', `updated_at` = '2015-01-31 09:27:49' WHERE `access_grants`.`id` = 4
+  [1m[36m (44.1ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 48ms (Views: 0.2ms | ActiveRecord: 44.7ms)
+
+
+Started GET "/auth/josh_id/user.json?oauth_token=9ddfd1e5419b37a85dc7f826f8b3947c" for 127.0.0.1 at 2015-01-31 14:27:49 +0500
+Processing by AuthController#user as JSON
+  Parameters: {"oauth_token"=>"9ddfd1e5419b37a85dc7f826f8b3947c"}
+Completed 401 Unauthorized in 1ms
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=demo_id&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=10ed495deab172041d23f05f23b50bd3def22038f960bb01" for 127.0.0.1 at 2015-01-31 14:50:24 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"demo_id", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"10ed495deab172041d23f05f23b50bd3def22038f960bb01"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  DELETE FROM `access_grants` WHERE (created_at < '2015-01-28 09:50:24')
+  [1m[36mClient Load (0.2ms)[0m  [1mSELECT `clients`.* FROM `clients` WHERE `clients`.`app_id` = 'demo_id' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `access_grants` (`access_token`, `access_token_expires_at`, `client_id`, `code`, `created_at`, `refresh_token`, `state`, `updated_at`, `user_id`) VALUES ('ec124c878538734914a3e1e660d4534d', NULL, NULL, '105e4b3e8d901eb566e75c29fccdab15', '2015-01-31 09:50:24', '8a88273bc5228bf39f9a22e0250138f2', '10ed495deab172041d23f05f23b50bd3def22038f960bb01', '2015-01-31 09:50:24', 2)[0m
+  [1m[35m (50.4ms)[0m  COMMIT
+Redirected to http://localhost:3001/auth/joshid/callback?code=105e4b3e8d901eb566e75c29fccdab15&response_type=code&state=10ed495deab172041d23f05f23b50bd3def22038f960bb01
+Completed 302 Found in 274ms (ActiveRecord: 54.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-31 14:50:34 +0500
+Processing by AuthController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  Rendered text template (0.0ms)
+Completed 200 OK in 321ms (Views: 318.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=demo_id&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=c6ccbfb8d7a933500f409c43280f0ec32ce00085fec42d51" for 127.0.0.1 at 2015-01-31 14:51:02 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"demo_id", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"c6ccbfb8d7a933500f409c43280f0ec32ce00085fec42d51"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM `access_grants` WHERE (created_at < '2015-01-28 09:51:02')[0m
+  [1m[35mClient Load (0.1ms)[0m  SELECT `clients`.* FROM `clients` WHERE `clients`.`app_id` = 'demo_id' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `access_grants` (`access_token`, `access_token_expires_at`, `client_id`, `code`, `created_at`, `refresh_token`, `state`, `updated_at`, `user_id`) VALUES ('13a44c07e4703cf3924490e099c6046e', NULL, NULL, '78d7691cbff4c89a9906b449fc71c484', '2015-01-31 09:51:02', '4f18033ea9a7ad29279cb8ce2b96f4c8', 'c6ccbfb8d7a933500f409c43280f0ec32ce00085fec42d51', '2015-01-31 09:51:02', 2)
+  [1m[36m (76.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3001/auth/joshid/callback?code=78d7691cbff4c89a9906b449fc71c484&response_type=code&state=c6ccbfb8d7a933500f409c43280f0ec32ce00085fec42d51
+Completed 302 Found in 141ms (ActiveRecord: 79.6ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=demo_id&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=b3f81a39eb933ee113351d3a04a1360acdb76bd481adeda8" for 127.0.0.1 at 2015-01-31 14:51:02 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"demo_id", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"b3f81a39eb933ee113351d3a04a1360acdb76bd481adeda8"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `access_grants` WHERE (created_at < '2015-01-28 09:51:02')[0m
+  [1m[35mClient Load (0.1ms)[0m  SELECT `clients`.* FROM `clients` WHERE `clients`.`app_id` = 'demo_id' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `access_grants` (`access_token`, `access_token_expires_at`, `client_id`, `code`, `created_at`, `refresh_token`, `state`, `updated_at`, `user_id`) VALUES ('1af04274dff37dc630ec95a91ab07bab', NULL, NULL, 'e8240f972dce15996c3442155af9d9f0', '2015-01-31 09:51:02', 'b6b4d1ebadc1d8ca840a1d2ace5fbff7', 'b3f81a39eb933ee113351d3a04a1360acdb76bd481adeda8', '2015-01-31 09:51:02', 2)
+  [1m[36m (74.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3001/auth/joshid/callback?code=e8240f972dce15996c3442155af9d9f0&response_type=code&state=b3f81a39eb933ee113351d3a04a1360acdb76bd481adeda8
+Completed 302 Found in 79ms (ActiveRecord: 74.8ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2015-01-31 14:51:02 +0500
+Processing by AuthController#access_token as */*
+  Parameters: {"grant_type"=>"authorization_code", "code"=>"e8240f972dce15996c3442155af9d9f0", "client_id"=>"demo_id", "client_secret"=>"demo_secret", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback"}
+  [1m[35mClient Load (0.3ms)[0m  SELECT `clients`.* FROM `clients` WHERE (app_id = 'demo_id' AND app_secret = 'demo_secret') LIMIT 1
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=098zaqxsw4567&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=9c064d9f6ce75c96754e1af6613a7e12bc7110adf7408cfc" for 127.0.0.1 at 2015-01-31 14:52:36 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"098zaqxsw4567", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"9c064d9f6ce75c96754e1af6613a7e12bc7110adf7408cfc"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  DELETE FROM `access_grants` WHERE (created_at < '2015-01-28 09:52:36')
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT `clients`.* FROM `clients` WHERE `clients`.`app_id` = '098zaqxsw4567' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `access_grants` (`access_token`, `access_token_expires_at`, `client_id`, `code`, `created_at`, `refresh_token`, `state`, `updated_at`, `user_id`) VALUES ('57a120ba9852da3f3e33935d573c734c', NULL, 1, '3fc45691b3d126f97625f863e8bbf649', '2015-01-31 09:52:36', 'bb0b38340b0e12b5d3a185f22db42b67', '9c064d9f6ce75c96754e1af6613a7e12bc7110adf7408cfc', '2015-01-31 09:52:36', 2)[0m
+  [1m[35m (51.5ms)[0m  COMMIT
+Redirected to http://localhost:3001/auth/joshid/callback?code=3fc45691b3d126f97625f863e8bbf649&response_type=code&state=9c064d9f6ce75c96754e1af6613a7e12bc7110adf7408cfc
+Completed 302 Found in 230ms (ActiveRecord: 55.7ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2015-01-31 14:52:36 +0500
+Processing by AuthController#access_token as */*
+  Parameters: {"grant_type"=>"authorization_code", "code"=>"3fc45691b3d126f97625f863e8bbf649", "client_id"=>"098zaqxsw4567", "client_secret"=>"zaqxswcdevfrbgt", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback"}
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT `clients`.* FROM `clients` WHERE (app_id = '098zaqxsw4567' AND app_secret = 'zaqxswcdevfrbgt') LIMIT 1[0m
+  [1m[35mAccessGrant Load (0.2ms)[0m  SELECT `access_grants`.* FROM `access_grants` WHERE (code = '3fc45691b3d126f97625f863e8bbf649' AND client_id = 1) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  UPDATE `access_grants` SET `access_token_expires_at` = '2015-01-31 10:22:36', `updated_at` = '2015-01-31 09:52:36' WHERE `access_grants`.`id` = 8
+  [1m[36m (35.7ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 41ms (Views: 0.3ms | ActiveRecord: 36.3ms)
+
+
+Started GET "/auth/josh_id/user.json?oauth_token=57a120ba9852da3f3e33935d573c734c" for 127.0.0.1 at 2015-01-31 14:52:36 +0500
+Processing by AuthController#user as JSON
+  Parameters: {"oauth_token"=>"57a120ba9852da3f3e33935d573c734c"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT users.* FROM `users` INNER JOIN `access_grants` ON `access_grants`.`user_id` = `users`.`id` WHERE (access_grants.access_token = '57a120ba9852da3f3e33935d573c734c' AND (access_grants.access_token_expires_at IS NULL OR access_grants.access_token_expires_at > '2015-01-31 09:52:36')) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2015-01-31 09:27:48', `current_sign_in_at` = '2015-01-31 09:52:36', `sign_in_count` = 4, `updated_at` = '2015-01-31 09:52:36' WHERE `users`.`id` = 2
+  [1m[36m (39.4ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 112ms (Views: 0.1ms | ActiveRecord: 40.0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-31 15:29:20 +0500
+Processing by AuthController#welcome as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Completed 401 Unauthorized in 177ms
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-31 15:29:20 +0500
+Processing by AuthController#welcome as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+Completed 401 Unauthorized in 2ms
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-31 15:29:20 +0500
+Processing by AuthController#welcome as HTML
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-31 15:29:20 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.5ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@ereader_auther/gems/devise-2.1.2/app/views/devise/shared/_links.erb (1.2ms)
+  Rendered sessions/new.html.erb within layouts/application (25.3ms)
+Compiled jquery.js  (3ms)  (pid 30358)
+Compiled jquery_ujs.js  (0ms)  (pid 30358)
+Compiled application.js  (117ms)  (pid 30358)
+Completed 200 OK in 193ms (Views: 192.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-31 15:29:20 +0500
+Served asset /application.css - 200 OK (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-31 15:29:20 +0500
+Served asset /jquery.js - 200 OK (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-31 15:29:20 +0500
+Served asset /jquery_ujs.js - 200 OK (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-31 15:29:20 +0500
+Served asset /application.js - 200 OK (35ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-31 15:29:31 +0500
+Processing by AuthController#welcome as HTML
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-31 15:29:31 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.2ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@ereader_auther/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.3ms)
+  Rendered sessions/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-31 15:29:31 +0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-31 15:29:31 +0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-31 15:29:31 +0500
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-31 15:29:31 +0500
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=demo_id&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=4a2c228591aa93f099c4e0e5a44f44f6be885a246bb148e2" for 127.0.0.1 at 2015-01-31 15:29:32 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"demo_id", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"4a2c228591aa93f099c4e0e5a44f44f6be885a246bb148e2"}
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-31 15:29:32 +0500
+Processing by SessionsController#new as HTML
+  Rendered sessions/_social_networks.html.erb (0.2ms)
+  Rendered /home/devsinc/.rvm/gems/ruby-1.9.3-p547@ereader_auther/gems/devise-2.1.2/app/views/devise/shared/_links.erb (0.4ms)
+  Rendered sessions/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-01-31 15:29:32 +0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-01-31 15:29:32 +0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-01-31 15:29:32 +0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-01-31 15:29:32 +0500
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-01-31 15:29:39 +0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HYeuQ2gr92uCvI238ysI2c8vYhCl24ePIuty0e/ygME=", "user"=>{"email"=>"a@a.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'a@a.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.6ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2015-01-31 09:52:36', `current_sign_in_at` = '2015-01-31 10:29:39', `sign_in_count` = 5, `updated_at` = '2015-01-31 10:29:39' WHERE `users`.`id` = 2[0m
+  [1m[35m (53.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/auth/josh_id/authorize?response_type=code&client_id=demo_id&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=4a2c228591aa93f099c4e0e5a44f44f6be885a246bb148e2
+Completed 302 Found in 239ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/josh_id/authorize?response_type=code&client_id=demo_id&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fjoshid%2Fcallback&state=4a2c228591aa93f099c4e0e5a44f44f6be885a246bb148e2" for 127.0.0.1 at 2015-01-31 15:29:40 +0500
+Processing by AuthController#authorize as HTML
+  Parameters: {"response_type"=>"code", "client_id"=>"demo_id", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback", "state"=>"4a2c228591aa93f099c4e0e5a44f44f6be885a246bb148e2"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM `access_grants` WHERE (created_at < '2015-01-28 10:29:40')
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT `clients`.* FROM `clients` WHERE `clients`.`app_id` = 'demo_id' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (9.9ms)[0m  [1mINSERT INTO `access_grants` (`access_token`, `access_token_expires_at`, `client_id`, `code`, `created_at`, `refresh_token`, `state`, `updated_at`, `user_id`) VALUES ('33a4c77e359ccb4cca32f0fb16df2b45', NULL, NULL, 'cc645f3cc18cbf28323c4f57ef050c95', '2015-01-31 10:29:40', '460e6b43043b9a2cb0ef09f33c9b4f31', '4a2c228591aa93f099c4e0e5a44f44f6be885a246bb148e2', '2015-01-31 10:29:40', 2)[0m
+  [1m[35m (58.3ms)[0m  COMMIT
+Redirected to http://localhost:3001/auth/joshid/callback?code=cc645f3cc18cbf28323c4f57ef050c95&response_type=code&state=4a2c228591aa93f099c4e0e5a44f44f6be885a246bb148e2
+Completed 302 Found in 146ms (ActiveRecord: 70.1ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2015-01-31 15:29:40 +0500
+Processing by AuthController#access_token as */*
+  Parameters: {"grant_type"=>"authorization_code", "code"=>"cc645f3cc18cbf28323c4f57ef050c95", "client_id"=>"demo_id", "client_secret"=>"demo_secret", "redirect_uri"=>"http://localhost:3001/auth/joshid/callback"}
+  [1m[36mClient Load (0.1ms)[0m  [1mSELECT `clients`.* FROM `clients` WHERE (app_id = 'demo_id' AND app_secret = 'demo_secret') LIMIT 1[0m
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-01-31 15:29:42 +0500
+Processing by SessionsController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-31 15:29:42 +0500
+Processing by AuthController#welcome as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  Rendered text template (0.0ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-01-31 15:29:47 +0500
+Processing by AuthController#welcome as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+  Rendered text template (0.0ms)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms)
